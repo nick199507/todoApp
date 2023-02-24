@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<title>TodoList編集</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/todoList">Todoリストデモ</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+			<div class="card-header">
+				<h5 class="card-title">Todo編集</h5>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/todoList/{id}(id=*{todoNum})}" th:method="put"
+					th:object="${todo}">
+					<div class="form-group row">
+						<label class="col-md-2 control-label">ID</label>
+						<div class="col-md-10">
+							<div class="col-md-10" th:text="*{todoNum}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label">Todo名</label>
+						<div class="col-md-10">
+							<input class="form-control" type="text" th:field="*{todoName}" />
+							<div class="text-danger" th:if="${#fields.hasErrors('todoName')}"
+								th:errors="*{todoName}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label">Todo詳細</label>
+						<div class="col-md-10">
+							<input class="form-control" type="text" th:field="*{todoDetail}" />
+							<div class="text-danger"
+								th:if="${#fields.hasErrors('todoDetail')}"
+								th:errors="*{todoDetail}"></div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-md-2 col-md-9">
+							<button class="btn btn-primary">更新</button>
+						</div>
+					</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	<script src="/js/jquery-3.5.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

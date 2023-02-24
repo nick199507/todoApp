@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<title>Todo詳細</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/todoList">Todoリストデモ</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+			<div class="card-header">
+				<h5 class="card-title">Todo詳細</h5>
+			</div>
+			<div class="card-body">
+				<div th:object="${todo}">
+					<div class="form-group row">
+						<label class="col-md-2">Todo名</label>
+						<div class="col-md-10" th:text="*{todoName}"></div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 control-label">Todo詳細</label>
+						<div class="col-md-10 form-control-static" th:text="*{todoDetail}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/jquery-3.5.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
